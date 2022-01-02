@@ -11,7 +11,7 @@ API는 응용 프로그램이 **자신과 연관된 프로그램을 만들 수 �
 API는 클랑드 네이티브 애플리케이션 개발을 통해 자체 인프라를 연결하는 간소화된 방식이지만
 고객 및 다른 외부 사용자와 데이터를 허용하기도 한가 (ex: Google Maps API)
 
-<img src='./img/API-page-graphic.png' width='400'/>
+<img src='../img/API-page-graphic.png' width='400'/>
 
 
 SDK는 하드웨어 플랫폼, 운영 체제 또는 프로그래밍 언어 제작사가 제공하는 일련의 툴이다
