@@ -11,7 +11,7 @@ API는 응용 프로그램이 **자신과 연관된 프로그램을 만들 수 �
 API는 클랑드 네이티브 애플리케이션 개발을 통해 자체 인프라를 연결하는 간소화된 방식이지만
 고객 및 다른 외부 사용자와 데이터를 허용하기도 한가 (ex: Google Maps API)
 
-<img src='../img/API-page-graphic.png' width='400'/>
+<img src='../img/API-page-graphic.png' width='700'/>
 
 
 SDK는 하드웨어 플랫폼, 운영 체제 또는 프로그래밍 언어 제작사가 제공하는 일련의 툴이다
@@ -113,7 +113,6 @@ Functional Programming 기능을 순수 함수로 나누어 구현하는 기법�
 
 ## 라이브러리, 프레임워크
 
-
 ### 라이브러리
 
 단순하게 활용 가능한 도구들의 집합으로 개발자가 필요에 의해 만든 클래스를 호출하여 사용하는 방식이다
@@ -132,3 +131,58 @@ Functional Programming 기능을 순수 함수로 나누어 구현하는 기법�
 두 용어의 차이점은 개발 주도성이 어디에 있는가에 차이가 있다
 라이브러리는 개발자가 프로세스를 작성하면서 필요한 코드를 가져다 사용하는 반면
 프레임워크는 프로세스를 가지고 있으며 개발자는 프레임워크 안에 필요한 코드를 작성한다
+
+
+## Model1과 Model2 
+
+모든 기능이 합쳐져 있는 JSP Model1
+Model1을 분리시켜놓은 것이 Moddel2로
+MVC 패턴의 기본적인 구조이다
+
+### Model1
+<img src='../img/model1.png' width='700'/>
+
+모든 클리이언트 요청과 응답을 하는 JSP가 담당하는 구조
+
+페이지(View)에 비즈니스 로직을 처리하기 위한 코드와 결과 출력을 관리하는 코드가 뒤섞여 있으며
+해당 페이지에서 모든 정보를 저장(Model)하거나 처리(Controller)한다
+- 장점: 단순한 페이지 작성으로 구현이 쉬워 소규모 애플리케이션에 적합하다
+- 단점: 재사용이 힘들고 가독성을 떨어진다, 대규모 애플리케이션 등에서 코드가 복잡해지면 유지보수가 힘들다
+
+
+### Model2
+<img src='../img/model2.png' width='700'/>
+
+클라이언트의 요청, 응답, 비즈니스 로직 처리 부분을 모듈화한 구조
+
+클라이언트의 요청을 하나의 Web Container가 받아 알맞게 처리한 후 그 결과를 View에 전달한다
+- 장점: 처리작업의 분리로 유지보수와 확장이 용이하다
+- 단점: 구조 설계를 위한 시간이 많이 소요되므로 개발 시간이 증가한다
+
+
+## MVC 패턴
+소프트웨어 디자인 패턴으로 Model-View-Controller의 약자이다
+<img src='../img/mvc.png' width='700'/>
+
+- Model: 애플리케이션의 정보(데이터) 담당
+  - 클라이언트의 요청에서 필요한 자료를 데이터베이스에서 가져오거나 수정하여 Controller에 전달한다
+- View: UI 요소 담당
+  - 어떤 View가 보여질지는 Controller에 의해서 결정된다
+- Controller: 데이터와 비즈니스 로직 사이의 상호동작을 관리한다
+  - 클라이언트의 요청을 받고 적절한 Model에게 동작을 지시하고 Model이 처리하여 반환한     데이터를 적잘한 View로 전달한다
+
+
+## MVP 패턴
+MVC가 가진 Model-View-Controller 사이의 강한 결합을 해결하기 위한 
+소프트웨어 디자인 패턴, Model-View-Presenter
+<img src='../img/mvp.png' width='700'/>
+
+Presenter는 View로부터 입력을 Model에 요청하고 Model의 응답으로 View를 갱신하는 역할을 한다
+
+1. View에 사용자의 인터랙션이 들어온다
+2. View는 Presenter는에 액션이 들어왔다고 전달한다
+3. Presenter는 View의 액션대로 Model을 구성한다
+4. Update된 Presenter의 데이터를 View에 업데이트한다
+
+View와 Presenter의 의존관계가 여전히 강하고 Controller 대신 Presenter가 복잡해지는
+문제는 여전히 남아있다
