@@ -44,7 +44,78 @@ TCP는 IP패킷에 TCP 세그먼트를 씌워운다
 ### TCP 특징
 - 연결 지향: TCP 3 way handshake(가상 연결)
 - 데이터 전달 보증
-- 순서 보장
+- 순서 보장: 패킷1, 2, 3을 보냈는데 패킷1, 3, 2 순서로 도착하면 패킷2부터 다시 보내라고 요청한다
 - 신뢰할 수 있는 프로토콜
 - 현재 대부분 TCP 사용
 
+TCP 3 way handshake
+<img src='../img/3handshake.png' width='700'/>
+
+
+## UTP (사용자 데이터그램 프로토콜)
+User Datagram Protocol
+
+### TCP 특징
+- 하얀 도화지에 비유(기능이 거의 없다)
+- 연결 지향  TCP 3 way handshake X
+- 데이터 전달 보증 X
+- 순서 보장 X
+- 단순하고 빠르다
+- IP와 거의 같다. +PORT, +체크섬 정도만 추가
+- 애플리케이션에서 추가 작업이 필요하다
+
+
+## PORT
+
+TCP/IP 패킷에는 출발지 IP, 출발지 PORT, 목적지 IP, 목적지 PORT, 전송 데이터 등이 들어 있다
+PORT는 같은 IP 내에서 프로세스를 구분한다
+<img src='../img/port.png' width='700'/>
+
+PORT는 0 ~ 65535 사이에서 할당 가능하다
+- 0 ~ 1023: 잘 알려진 포트, 사용하지 않는 것이 좋다
+- FTP: 20, 21
+- TELNET: 23
+- HTTP: 80
+- HTTPS: 443
+
+
+## DNS (도메인 네임 시스템)
+Domain Name System
+- 전화번호부
+- 도메인 명을 IP 주소로 변환
+
+IP는 기억하기 어렵고 변경될 수 있기 때문에 DNS 시스템이 필요하다
+<img src='../img/dns.png' width='700'/>
+
+
+## URI (Uniform Resource Identifier)
+
+- Uniform: 리소스를 식별하는 통일된 방식
+- Resource: 자원, UIR로 식별할 수 있는 모든 것(제한 없다)
+- Identifier: 다른 항목과 구분하는데 필요한 정보
+
+
+### URL, URN
+
+- URL: Locator, 리소스가 있는 위치를 지정
+- URN: Name, 리소스에 이름을 부여
+- 위치는 변할 수 있지만, 이름은 변하지 않는다
+- URN 이름만으로 실제 리소스를 찾는 방법이 보편화 되지 않음
+- URI, URL을 같은 의미라고 생각해도 무방
+
+<img src='../img/uri.png' width='700'/>
+
+
+## URL
+
+scheme://[userinfo@]host[:port][/path][?query][#fragment]
+
+https://www.google:443/search?q=hello&hi=ko
+프로토콜  호스트명    포트번호  패스   쿼리 파라미터
+
+### scheme
+- 주로 프로토콜 사용
+- 프로토콜: 어떤 방식으로 자원에 접근할 것인가 하는 약속
+  - ex) http, https, ftp 등
+- http는 80포트, https: 443 포트를 주소 사용, 포트는 생략 가능
+- https는 http에 보안 추가한 것
