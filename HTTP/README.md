@@ -119,3 +119,50 @@ https://www.google:443/search?q=hello&hi=ko
   - ex) http, https, ftp 등
 - http는 80포트, https: 443 포트를 주소 사용, 포트는 생략 가능
 - https는 http에 보안 추가한 것
+
+### userinfo
+- URL 에 사용자 정보를 포함해서 인증
+- 거의 사용하지 않는다
+
+### host
+- 호스트명
+- 도메인 명 또는 IP 주소를 직접 사용가능
+
+### port
+- 접속 포트
+- 일반적으로 생략한다, 생략시 http는 80 https는 443
+
+### path
+- 리소스 경로, 계층적 구조
+- ex) /home/profile
+      /member/id=1
+
+### quert
+- key=value 형태
+- ? 로 시작, & 로 추가 기능 ?keyA=valueA&keyB=valueB
+- query parameter, query string 등으로 부른다, 웹서버에 제공하는 파리미터, 문자 형태
+
+### fragment
+- html 내부 북마크 등에 사용
+- 서버에 전송하는 정보 아니다
+
+
+## 웹 브라우저 요청 흐름
+https://www.google:443/search?q=hello&hi=ko
+
+1. HTTP 요청 메서지를 생성한다
+
+GET /search?q=hello&hi=ko HTTP/1.1
+HOST: www.google.com
+
+2. SOCKET 라이브러리를 통해 전달
+  - TCP/IP 연결
+  - 데이터 전달
+
+3. TCP/IP 패킷 생성, HTTP 메시지 포함
+
+4. 웹 브라우저는 서버로 요청 패킷을 전달한다
+
+5. 서버는 요청 패킷을 받고 응답 패킷을 전달한다
+
+6. 웹 브라우저는 응답 패킷을 받고 HTML을 렌더링한다
