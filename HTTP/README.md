@@ -220,3 +220,39 @@ Stateless의 한계
 - 로그인한 사용자의 경우 로그인 했다는 상태를 서버에 유지
 - 일반적으로 브라우저 쿠키와 서버 세션등을 사용해서 상태 유지
 - 상태 유지는 최소한만 사용
+
+
+### 비연결성 (commectionless)
+- HTTP는 기본이 연결을 유지하지 않는 모델이다
+- 일반적으로 초 단위의 이하의 빠른 속도로 응답한다
+- 1시간동안 수천명이 서비스를 사용해도 실제 서버에서 동시에 처리하는 요청은 수십개 이하로 매우 작다
+  - ex) 웹 브라우저에서 계속 연결해서 검새버튼을 누르지는 않는다
+- 서버 자원을 매우 효율적으로 사용할 수 있다
+
+#### 한계와 극복
+- TCP/IP 연결을 새로 맺어야 한다  3 way handshake 시간 추가
+- 웹 브라우저로 사이트를 요청하면 HTML 뿐만 아니라 자바스크립트, css, 추가 이미지등 수많은 자원이 함께 다운로드
+- 지금은 HTTP 지속연결(Persistent Connections)로 문제해결
+- HTTP/2, HTTP/3에서 더 많은 최적화
+
+<img src='../img/early_http.png' width='400'/>
+<img src='../img/now_http.png' width='400'/>
+
+
+## HTTP 메시지
+HTTP 메시지에 모든 것을 전송한다
+<img src='../img/http_message.png' width='500'/>
+
+### 시작 라인
+<img src='../img/start_line.png' width='300'/>
+요청 메시지 - HTTP 메서드
+- 종류: GET, POST, PUT, DELETE...
+- 서버가 수행해야 할 동작 지정
+  - GET: 리소스 조회
+  - POST: 요청 내역 처리
+
+요청 메시지 - 요청 대상 
+- absolute-path[?query]  (절대경로[?쿼리])
+- 절대경로="/"로 시작하는 경로
+
+요청 메시지 - HTTP 버전
