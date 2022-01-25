@@ -241,18 +241,49 @@ Stateless의 한계
 
 ## HTTP 메시지
 HTTP 메시지에 모든 것을 전송한다
+
 <img src='../img/http_message.png' width='500'/>
 
 ### 시작 라인
 <img src='../img/start_line.png' width='300'/>
-요청 메시지 - HTTP 메서드
+
+#### 요청 메시지
+HTTP 메서드
+
 - 종류: GET, POST, PUT, DELETE...
 - 서버가 수행해야 할 동작 지정
   - GET: 리소스 조회
   - POST: 요청 내역 처리
 
-요청 메시지 - 요청 대상 
+
+요청 대상 
 - absolute-path[?query]  (절대경로[?쿼리])
 - 절대경로="/"로 시작하는 경로
 
-요청 메시지 - HTTP 버전
+HTTP 버전
+- HTTP/1.1
+
+#### 응답 메시지
+<img src='../img/response_message.png' width='300'/>
+
+시작 라인
+- HTTP 버전
+- HTTP 상태 코드: 요청 성공, 실패를 나타냄
+  - 200: 성공
+  - 400: 클라이언트 요청 오류
+  - 500: 서버 내부 오류
+- 이유 문구
+
+HTTP 헤더
+<img src='../img/http_header.png' width='300'/>
+
+- HTTP 전송에 필요한 모든 부가정보
+- ex) 메시지 바디의 내용, 메시지 바디의 크기, 압축, 인증, 요청 클라이언트(브라우저) 정보, 서버 애플리케이션 정보, 캐시 관리 정보
+
+HTTP 메시지 마디
+<img src='../img/http_body.png' width='300'/>
+
+- 실제 전송할 데이터
+- HTML 문서, 이미지, 영상, JSON 등등 byte로 표현할 수 있는 모든 데이터 전송 가능
+
+
